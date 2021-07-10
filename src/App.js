@@ -11,19 +11,24 @@ function App(props) {
   const [repositorios, setRepositorios] = useState([]);
   function handlePesquisa() {
     /** String interpolation with parameter */
-    let link = `https://api.github.com/users/${usuario}/repos`;
-    axios.get(link).then(response => setRepositorios(response.data));
+    if (usuario != '') {
+      let link = `https://api.github.com/users/${usuario}/repos`;
+      axios.get(link).then(response => setRepositorios(response.data));
+    } else {
+      setUsuario('');
+      setRepositorios([]);
+    }
   }
   return (
     /** fragment <></> */
     <div className="conteiner">
       <p>Pesquisar repositórios no GitHub</p>
       <header>
-        <input type="text" className="usuarioInput" placeholder="Usuário" value={usuario} onChange={e => setUsuario(e.target.value)} />
+        <input type="text" className="usuarioInput" placeholder="Repositório" value={usuario} onChange={e => setUsuario(e.target.value)} />
         <button type="button" onClick={handlePesquisa}>Pesquisar</button>
       </header>
       <image>
-        {<img src={typeof (repositorios[0]) != "undefined" ? repositorios[0].owner.avatar_url : ''} />}
+        {typeof (repositorios[0]) != "undefined" ? <img src={repositorios[0].owner.avatar_url} /> : ''}
       </image>
       <data>
         <ul>
