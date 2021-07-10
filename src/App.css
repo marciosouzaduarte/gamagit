@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+header {
+  width: 100%;
+  margin: 10px 0 0 10px;
+  display: flex;
+  justify-content: center;
+}
+
+data {
+  width: 100%;
+  margin: 10px 0 0 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.usuarioInput {
+  margin-right: 5px;
+}
+
+ul {
+  margin-top: 30px;
+  width: 500px;
+  list-style: none;
+}

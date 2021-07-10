@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+/** Hook useState */
+import React, { useState } from 'react';
+//import logo from './logo.svg';
+import axios from 'axios';
 import './App.css';
 
-function App() {
+/** Component */
+function App(props) {
+  /** Desestruturation */
+  const [usuario, setUsuario] = useState('marciosouzaduarte');
+  const [repositorios, setRepositorios] = useState([]);
+  function handlePesquisa() {
+    /** String interpolation with parameter */
+    let link = `https://api.github.com/users/${usuario}/repos`;
+    axios.get(link).then(response => setRepositorios(response.data));
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    /** fragment <></> */
+    <div className="conteiner">
+      <header>
+        <input type="text" className="usuarioInput" placeholder="Usuário" value={usuario} onChange={e => setUsuario(e.target.value)} />
+        <button type="button" onClick={handlePesquisa}>Enviar</button>
       </header>
+      <data>
+        <ul>
+          {repositorios.map(repo => <li>{repo.id} - {repo.name}</li>)}
+        </ul>
+      </data>
     </div>
   );
 }
