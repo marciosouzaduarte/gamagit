@@ -27,6 +27,9 @@ function App(props) {
           {repositorios.map(repo => <li><a target="_blank" href={`https://github.com/${usuario}/${repo.name}`}>{repo.name}</a></li>)}
         </ul>
       </data>
+      <footer>
+        {<img src={typeof (repositorios[0]) != "undefined" ? repositorios[0].owner.avatar_url : ''} />}
+      </footer>
     </div>
   );
 }
