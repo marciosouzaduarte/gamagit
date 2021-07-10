@@ -56,14 +56,14 @@ data {
   justify-content: center;
 }
 
-footer {
+image {
   width: 100%;
   margin: 10px 0 0 10px;
   display: flex;
   justify-content: center;
 }
 
-footer img {
+image img {
   width: 20%;
   height: auto;
 }

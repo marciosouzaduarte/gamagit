@@ -22,14 +22,14 @@ function App(props) {
         <input type="text" className="usuarioInput" placeholder="Usuário" value={usuario} onChange={e => setUsuario(e.target.value)} />
         <button type="button" onClick={handlePesquisa}>Pesquisar</button>
       </header>
+      <image>
+        {<img src={typeof (repositorios[0]) != "undefined" ? repositorios[0].owner.avatar_url : ''} />}
+      </image>
       <data>
         <ul>
           {repositorios.map(repo => <li><a target="_blank" href={`https://github.com/${usuario}/${repo.name}`}>{repo.name}</a></li>)}
         </ul>
       </data>
-      <footer>
-        {<img src={typeof (repositorios[0]) != "undefined" ? repositorios[0].owner.avatar_url : ''} />}
-      </footer>
     </div>
   );
 }
