@@ -17,13 +17,14 @@ function App(props) {
   return (
     /** fragment <></> */
     <div className="conteiner">
+      <p>Pesquisar repositórios no GitHub</p>
       <header>
         <input type="text" className="usuarioInput" placeholder="Usuário" value={usuario} onChange={e => setUsuario(e.target.value)} />
-        <button type="button" onClick={handlePesquisa}>Enviar</button>
+        <button type="button" onClick={handlePesquisa}>Pesquisar</button>
       </header>
       <data>
         <ul>
-          {repositorios.map(repo => <li>{repo.id} - {repo.name}</li>)}
+          {repositorios.map(repo => <li><a target="_blank" href={`https://github.com/${usuario}/${repo.name}`}>{repo.name}</a></li>)}
         </ul>
       </data>
     </div>
